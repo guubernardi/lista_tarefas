@@ -66,7 +66,6 @@ function loadTarefas() {
     const raw = localStorage.getItem(KEY);
     if (!raw) return [];
     const data = JSON.parse(raw);
-
     if (Array.isArray(data) && data.every(x => typeof x === 'object' && x !== null && 'text' in x)) {
       return data;
     }
@@ -78,7 +77,6 @@ function loadTarefas() {
     return [];
   }
 }
-
 function saveTarefas(tarefas) {
   localStorage.setItem(KEY, JSON.stringify(tarefas));
 }
