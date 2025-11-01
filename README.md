@@ -1,0 +1,78 @@
+Lista de Tarefas
+
+Pequeno app de To-Do feito com HTML + CSS + JavaScript puro, salvando tudo no localStorage.
+Inclui IDs estáveis, checkbox de concluída, exclusão, delegação de eventos e migração automática do formato antigo (array de strings) para o formato novo (objetos).
+
+✨ Funcionalidades
+
+Adicionar tarefas
+
+Marcar como concluída
+
+Excluir tarefas
+
+Contador “X concluídas de Y”
+
+Estado vazio (“Sem tarefas ainda”)
+
+Persistência em localStorage
+
+Migração automática do storage antigo (strings) → novo (objetos)
+
+Delegação de eventos (performático com listas grandes)
+
+🧱 Stack
+
+Front: HTML, CSS, JavaScript (ES6+)
+
+Armazenamento: localStorage do navegador
+
+📂 Estrutura de pastas
+.
+├─ index.html      # Estrutura da página
+├─ script.js       # Lógica da aplicação
+├─ README.md       # Este arquivo :)
+
+🧠 Como funciona (resumo técnico)
+
+As tarefas vivem num array tarefas com objetos assim:
+
+{
+  id: "uuid-ou-timestamp",
+  text: "Comprar pão",
+  done: false,
+  createdAt: 1730440000000
+}
+
+
+IDs estáveis: gerados com crypto.randomUUID() (quando disponível) ou fallback com timestamp+rand.
+
+Migração automática: se o localStorage tiver um array de strings (formato antigo), o app converte para o formato de objetos na primeira execução.
+
+Delegação de eventos: um único listener na <ul> lida com “excluir” e “toggle” das tarefas.
+
+Renderização: usa DocumentFragment e replaceChildren pra render eficiente.
+
+🤝 Contribuindo
+
+Faça um fork
+
+Crie uma branch: git checkout -b feat/filtro-concluidas
+
+Faça commits claros: git commit -m "feat: filtro por concluídas"
+
+Envie: git push origin feat/filtro-concluidas
+
+Abra um Pull Request explicando o que mudou (e, se possível, anexando um GIF curto)
+
+Melhorias de código são bem-vindas. Explique o “porquê” da mudança no PR — facilita revisão e traz pontos de aprendizado pra todo mundo.
+
+📄 Licença
+
+MIT — use, modifique e distribua com liberdade.
+Considere manter os créditos se este projeto te ajudou. 💙
+
+💬 Contato: gubernardi@hotmail.com
+
+Encontrou um bug? Tem uma ideia massa pra melhorar?
+Abra uma Issue ou mande um PR — curto discussões técnicas e feedbacks sinceros.
