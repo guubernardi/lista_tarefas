@@ -191,34 +191,3 @@ list.addEventListener('change', (e) => {
 
 // Primeira renderização quando a página carrega
 render();
-
-
-
-const KEY = '@listaTarefas';
-
-function newId() {
-  if (crypto?.randomUUID) return crypto.randomUUID();
-  return 't_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-}
-
-function loadTarefas() {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (!raw) return [];
-    const data = JSON.parse(raw);
-
-    if (Array.isArray(data) && data.every(x => typeof x === 'object' && x !== null && 'text' in x)) {
-      return data;
-    }
-    if (Array.isArray(data) && data.every(x => typeof x === 'string')) {
-      return data.map(text => ({ id: newId(), text, done: false, createdAt: Date.now() }));
-    }
-    return [];
-  } catch {
-    return [];
-  }
-}
-
-function saveTarefas(tarefas) {
-  localStorage.setItem(KEY, JSON.stringify(tarefas));
-}
