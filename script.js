@@ -1,11 +1,3 @@
-// ===============================================================
-// LISTA DE TAREFAS – versão comentada "como iniciante"
-// Objetivo: guardar tarefas no navegador, mostrar na tela,
-// marcar como concluídas e excluir. Tudo em JavaScript puro.
-// ===============================================================
-
-// ===== Config & util =====
-
 // Uma "chave" para sabermos onde vamos salvar/ler no localStorage
 const KEY = '@listaTarefas';
 
@@ -53,12 +45,8 @@ function saveTarefas(tarefas) {
   localStorage.setItem(KEY, JSON.stringify(tarefas));
 }
 
-// ===== Estado =====
-
 // Aqui guardamos as tarefas em memória enquanto a página está aberta
 let tarefas = loadTarefas();
-
-// ===== DOM =====
 
 // Pega do HTML as coisas que vamos mexer
 const form         = document.querySelector('#todo-form');  // o formulário (input + botão)
