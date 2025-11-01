@@ -53,36 +53,6 @@ Delegação de eventos: um único listener na <ul> lida com “excluir” e “t
 
 Renderização: usa DocumentFragment e replaceChildren pra render eficiente.
 
-🧩 Código principal (trecho)
-const KEY = '@listaTarefas';
-
-function newId() {
-  if (crypto?.randomUUID) return crypto.randomUUID();
-  return 't_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-}
-
-function loadTarefas() {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (!raw) return [];
-    const data = JSON.parse(raw);
-    if (Array.isArray(data) && data.every(x => typeof x === 'object' && x !== null && 'text' in x)) {
-      return data;
-    }
-    if (Array.isArray(data) && data.every(x => typeof x === 'string')) {
-      return data.map(text => ({ id: newId(), text, done: false, createdAt: Date.now() }));
-    }
-    return [];
-  } catch {
-    return [];
-  }
-}
-function saveTarefas(tarefas) {
-  localStorage.setItem(KEY, JSON.stringify(tarefas));
-}
-
-O restante do código (render, add, delete, toggle, edição inline) está no script.js.
-
 🤝 Contribuindo
 
 Faça um fork
