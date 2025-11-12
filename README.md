@@ -23,7 +23,7 @@ Aplicação **zero-dependency** (HTML, CSS e JavaScript puro) para criar, conclu
 
 ## 🖼️ Prévia
 
-- **Demo:**[(https://guubernardi.github.io/lista_tarefas/)
+- **Demo:**(https://guubernardi.github.io/lista_tarefas/)
 ---
 
 ## 🧠 Como funciona (arquitetura simples)
