@@ -1,78 +1,40 @@
-Lista de Tarefas
+# ✅ Lista de Tarefas (To-Do)
 
-Pequeno app de To-Do feito com HTML + CSS + JavaScript puro, salvando tudo no localStorage.
-Inclui IDs estáveis, checkbox de concluída, exclusão, delegação de eventos e migração automática do formato antigo (array de strings) para o formato novo (objetos).
+Aplicação **zero-dependency** (HTML, CSS e JavaScript puro) para criar, concluir e excluir tarefas no navegador, com **persistência em `localStorage`** e design responsivo.
 
-✨ Funcionalidades
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)
+![Status](https://img.shields.io/badge/status-estável-brightgreen)
 
-Adicionar tarefas
+---
 
-Marcar como concluída
+## ✨ Funcionalidades
 
-Excluir tarefas
+- **Adicionar tarefas** rapidamente (Enter no campo de texto ou botão “Adicionar”)
+- **Concluir/Desmarcar** tarefa com checkbox (atualiza contagem “X concluídas de Y”)
+- **Excluir** tarefa individual
+- **Persistência local** usando `localStorage` (abre e continua de onde parou)
+- **Migração automática** do formato antigo (array de strings) para o **formato novo** `{ id, text, done, createdAt }`
+- **IDs estáveis** via `crypto.randomUUID()` com **fallback** seguro
+- **Responsivo e acessível** (semântica básica, rótulos clicáveis e foco visível)
 
-Contador “X concluídas de Y”
+---
 
-Estado vazio (“Sem tarefas ainda”)
+## 🖼️ Prévia
 
-Persistência em localStorage
+- **Demo:**[(https://guubernardi.github.io/lista_tarefas/)
+---
 
-Migração automática do storage antigo (strings) → novo (objetos)
+## 🧠 Como funciona (arquitetura simples)
 
-Delegação de eventos (performático com listas grandes)
+- **Estado**: mantido em um array `tarefas` na memória e salvo em `localStorage` (`@listaTarefas`)
+- **Renderização**: função `render()` reconstrói a lista a partir do estado (usa `DocumentFragment` para eficiência)
+- **Ações**:
+  - `addTask(text)` → insere um objeto `{ id, text, done, createdAt }`
+  - `toggleDone(id, value)` → marca/desmarca como concluída
+  - `deleteTask(id)` → remove do array e salva
+- **Eventos delegados**: clique de exclusão e alteração de checkbox são tratados no `<ul>` (menos *listeners*, mais performance)
 
-🧱 Stack
+---
 
-Front: HTML, CSS, JavaScript (ES6+)
-
-Armazenamento: localStorage do navegador
-
-📂 Estrutura de pastas
-.
-├─ index.html      # Estrutura da página
-├─ script.js       # Lógica da aplicação
-├─ README.md       # Este arquivo :)
-
-🧠 Como funciona (resumo técnico)
-
-As tarefas vivem num array tarefas com objetos assim:
-
-{
-  id: "uuid-ou-timestamp",
-  text: "Comprar pão",
-  done: false,
-  createdAt: 1730440000000
-}
-
-
-IDs estáveis: gerados com crypto.randomUUID() (quando disponível) ou fallback com timestamp+rand.
-
-Migração automática: se o localStorage tiver um array de strings (formato antigo), o app converte para o formato de objetos na primeira execução.
-
-Delegação de eventos: um único listener na <ul> lida com “excluir” e “toggle” das tarefas.
-
-Renderização: usa DocumentFragment e replaceChildren pra render eficiente.
-
-🤝 Contribuindo
-
-Faça um fork
-
-Crie uma branch: git checkout -b feat/filtro-concluidas
-
-Faça commits claros: git commit -m "feat: filtro por concluídas"
-
-Envie: git push origin feat/filtro-concluidas
-
-Abra um Pull Request explicando o que mudou (e, se possível, anexando um GIF curto)
-
-Melhorias de código são bem-vindas. Explique o “porquê” da mudança no PR — facilita revisão e traz pontos de aprendizado pra todo mundo.
-
-📄 Licença
-
-MIT — use, modifique e distribua com liberdade.
-Considere manter os créditos se este projeto te ajudou. 💙
-
-💬 Contato: gubernardi@hotmail.com
-
-Encontrou um bug? Tem uma ideia massa pra melhorar?
-Abra uma Issue ou mande um PR — curto discussões técnicas e feedbacks sinceros.
